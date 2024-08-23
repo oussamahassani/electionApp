@@ -1,0 +1,197 @@
+<div class="container-fluid" id="container-wrapper">
+    <div class="row mb-4 mt-3">
+
+        <div class="col-xl-3 m-3 card">
+            <div class=" h-100">
+                <div>
+                    <div class="row align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-sm font-weight-bold text-uppercase mb-1">Colis créé</div>
+                            <div class="h2 mb-0 font-weight-bold text-gray-800">{{data.countallColis}}</div>
+                        </div>
+                        <a href="gestion_par_etat?dateD=2023-09-01&amp;dateF=2023-09-19&amp;etat=Colis créé"
+                            class="col-auto">
+                            <i class="fa fa-plus-circle fa-3x text-primary"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 m-3 card">
+            <div class=" h-100">
+                <div>
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-sm font-weight-bold text-uppercase mb-1">Total Votes</div>
+                            <div class="h2 mb-0 font-weight-bold text-gray-800">{{data.totalVotes}}</div>
+                        </div>
+                        <a href="gestion_par_etat?dateD=2023-09-01&amp;dateF=2023-09-19&amp;etat=Colis livré"
+                            class="col-auto">
+                            <i class="fa fa-check fa-3x text-danger"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 m-3 card">
+            <div class=" h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-sm font-weight-bold text-uppercase mb-1">Colis affected</div>
+                            <div class="h2 mb-0 font-weight-bold text-gray-800">{{data.coutColisAffected}}</div>
+                        </div>
+                        <a href="gestion_par_etat?dateD=2023-09-01&amp;dateF=2023-09-19&amp;etat=Collecté"
+                            class="col-auto">
+                            <i class="fas fa-box fa-3x text-primary"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 m-3 card">
+            <div class=" h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-sm font-weight-bold text-uppercase mb-1">total Election</div>
+                            <div class="h2 mb-0 font-weight-bold text-gray-800">{{data.nonAcceptedColis}}</div>
+                        </div>
+                        <em class="col-auto">
+                            <i class="fas fa-shipping-fast fa-3x text-danger"></i>
+                        </em>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 m-3 card">
+            <div class=" h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-sm font-weight-bold text-uppercase mb-1">Colis retours</div>
+                            <div class="h2 mb-0 font-weight-bold text-gray-800">{{data.acceptedColisReturn}}</div>
+                        </div>
+                        <em class="col-auto">
+                            <i class="fa-solid fa-arrow-rotate-left fa-3x text-danger"></i>
+                        </em>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 m-3 card">
+            <div class=" h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-sm font-weight-bold text-uppercase mb-1">TOTAL user</div>
+                            <div class="h2 mb-0 font-weight-bold text-gray-800">{{data.acceptedColisPayed}}</div>
+                        </div>
+                        <em class="col-auto">
+                            <i class="fa-solid fa-money-bill fa-3x text-danger"></i>
+                        </em>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">User Overview</h6>
+
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-12 col-lg-12 mb-4 card">
+            <div class="table-responsive">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h4 class="m-0 font-weight-bold text-primary">Last 3 Elector</h4>
+                </div>
+                <table class="table table-bordered align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+
+
+                            <th>firstName and lastName </th>
+                            <th>Phone</th>
+                            <th>City</th>
+                            <th>Adresse</th>
+                            <th>Email</th>
+                            <th>CreatedDate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="
+                let colis of data.lastCient
+                 
+              
+              ">
+
+                            <td scope="col">{{ colis.firstName }} {{" "}} {{colis.lastName}}</td>
+                            <td scope="col"> {{ colis.phone }}</td>
+                            <td scope="col"> {{ colis.gouvernerat }}</td>
+
+                            <td scope="col"> {{ colis.adress }}</td>
+                            <td scope="col"> {{ colis.email }}</td>
+                            <td scope="col"> {{ colis.createdDate | date:'shortDate' }}</td>
+                        </tr>
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-xl-12 col-lg-12 mb-4">
+            <div class="card">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h4 class="m-0 font-weight-bold text-primary">Last 3 Elections</h4>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+
+                                <th class="text-primary">Name</th>
+                                <th>Start Day</th>
+                                <th>End Day </th>
+                                <th>createdDate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="
+                  let colis of data.lastColis
+                   
+                
+                ">
+                                <td scope="col"> {{ colis.name }} </td>
+                                <td scope="col">{{ colis.startDateTime }}</td>
+                                <td scope="col"> {{ colis.endDateTime }}</td>
+                                <td scope="col"> {{ colis.receiverName }}</td>
+                                <td scope="col"> {{ colis.createdDate | date:'shortDate' }}</td>
+                            </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

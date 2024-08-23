@@ -1,0 +1,115 @@
+<app-navbarWeb></app-navbarWeb>
+<div class="contact3 py-5">
+    <div class="row no-gutters">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card-shadow">
+                        <iframe width="520" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                            id="gmap_canvas"
+                            src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=sousse%20colis%20xpress+(colis%20xpress)&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-box ml-3">
+                        <h1 class="font-weight-light mt-2">Quick Contact</h1>
+                        <form class="mt-4" (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group mt-2">
+                                        <input class="form-control" type="text" formControlName="name"
+                                            placeholder="name" ngModel required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group mt-2">
+                                        <input class="form-control" type="email" formControlName="email"
+                                            placeholder="email address" required>
+                                    </div>
+                                    <div *ngIf="!contactForm.get('email')!.valid && contactForm.get('email')!.touched">
+                                        <p class="error" *ngIf="!contactForm.get('email')!.errors!['required']">
+                                            *Please enter email
+                                        </p>
+                                        <p class="error" *ngIf="!contactForm.get('email')!.errors!['email']">
+                                            *Please enter a valid email
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group mt-2">
+                                        <input class="form-control" type="text" placeholder="phone"
+                                            formControlName="phone" ngModel required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group mt-2">
+                                        <textarea class="form-control" rows="3" placeholder="message"
+                                            formControlName="message" ngModel required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button type="submit"
+                                        class="btn btn-danger-gradiant mt-3 text-white border-0 px-3 py-2"
+                                        [disabled]="!contactForm.valid"><span> SUBMIT</span></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <p>{{message}}</p>
+                </div>
+                <div class="col-lg-12">
+                    <div class=" mt-4 border-0 mb-4">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4">
+                                <div class=" d-flex align-items-center c-detail pl-0">
+                                    <div class="mr-3 align-self-center">
+                                        <img
+                                            src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon1.png">
+                                    </div>
+                                    <div class="">
+                                        <h6 class="font-weight-medium">Address</h6>
+                                        <p class="">immeuble Elite avenue Mhamed Maarouf 4000 sousse B-502 Sousse,
+                                            <br> 4000 sousse
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="card-body d-flex align-items-center c-detail">
+                                    <div class="mr-3 align-self-center">
+                                        <img
+                                            src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon2.png">
+                                    </div>
+                                    <div class="">
+                                        <h6 class="font-weight-medium">Phone</h6>
+                                        <p class="">+216 111 111
+                                            <br> +216 000 111
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="card-body d-flex align-items-center c-detail">
+                                    <div class="mr-3 align-self-center">
+                                        <img
+                                            src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon3.png">
+                                    </div>
+                                    <div class="">
+                                        <h6 class="font-weight-medium">Email</h6>
+                                        <p class="">
+                                            info@VoteSmart.com
+                                            <br> commercial@VoteSmart.com
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

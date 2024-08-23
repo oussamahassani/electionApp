@@ -1,0 +1,37 @@
+<body>
+    <!-- login.component.html -->
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h2>Digital Election</h2>
+                <p>Welcome back! Please login to continue.</p>
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="formSubmit()">
+                <div class="input-group">
+                    <input [(ngModel)]="loginData.username" name="username" formControlName="username" type="text"
+                        id="username" placeholder="Username" class="form-control">
+                </div>
+                <span
+                    *ngIf="(username?.hasError('required') && username?.touched) || (username?.hasError('email') && username?.dirty) "
+                    class="text-danger">
+                    Email is required and must be a valid email address
+                </span>
+                <div class="input-group">
+
+                    <input [(ngModel)]="loginData.password" name="password" formControlName="password" type="password"
+                        id="password" placeholder="Password" class="form-control">
+
+                </div>
+                <span
+                    *ngIf="(password?.hasError('required') && password?.touched) || (password?.errors?.['minlength'] && password?.dirty) "
+                    class="text-danger">
+                    Password is required and must be at least 6 characters
+                </span>
+                <button (click)="formSubmit()" type="submit">Login</button>
+
+                <p class="footer">Don't have an account? <a routerLink="/register">Sign Up</a></p>
+
+            </form>
+        </div>
+    </div>
+</body>

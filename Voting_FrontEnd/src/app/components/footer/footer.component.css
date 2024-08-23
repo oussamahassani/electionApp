@@ -1,0 +1,53 @@
+.rowfooter {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+}
+
+img {
+    width: 150px;
+    height: 60px;
+}
+
+.social-icons i {
+    padding: 8px;
+    color: #D08D57;
+}
+
+.social-icons i:hover {
+    transform: scale(1.5);
+}
+
+.office-locations {
+    display: flex;
+    gap: 60px;
+}
+
+.contact-info {
+    margin-top: 30px;
+}
+
+.copyright {
+    margin-top: 60px;
+}
+
+.copyright p {
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    .footer-top {
+        flex-wrap: wrap;
+        margin: 0;
+    }
+
+    .footer-bottom {
+        flex-wrap: wrap;
+        margin: 0;
+    }
+}

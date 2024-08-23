@@ -1,0 +1,88 @@
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h2>Registration</h2>
+                <p>Create your account.</p>
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="formSubmit()">
+                <div class="input-group">
+                    <input [(ngModel)]="registrationData.firstName" formControlName="firstName" name="firstName"
+                        type="text" placeholder="First Name">
+                    <span *ngIf="(firstName?.hasError('required') && firstName?.touched) " class="text-danger">
+                        First Name is required
+                    </span>
+                </div>
+
+                <div class="input-group">
+                    <input [(ngModel)]="registrationData.lastName" formControlName="lastName" name="lastName"
+                        type="text" placeholder="Last Name">
+                    <span *ngIf="(lastName?.hasError('required') && lastName?.touched) " class="text-danger">
+                        Last Name is required
+                    </span>
+                </div>
+
+                <div class="input-group">
+                    <input [(ngModel)]="registrationData.email" formControlName="email" name="email" type="email"
+                        placeholder="Email">
+                </div>
+                <div class="input-group">
+                    <input [(ngModel)]="registrationData.password" formControlName="password" name="password"
+                        type="password" placeholder="Password">
+                </div>
+                <div class="input-group">
+                    <input [(ngModel)]="registrationData.phone" formControlName="phone" name="phone" type="tel"
+                        placeholder="Phone">
+                </div>
+                <div class="input-group">
+                    <input [(ngModel)]="confirmPassword" formControlName="confirmPassword" name="confirmPassword"
+                        type="password" placeholder="Confirm Password">
+                </div>
+                <div class="input-group">
+                    <textarea [(ngModel)]="registrationData.address" formControlName="address" name="address" rows="3"
+                        placeholder="Address"></textarea>
+                </div>
+                <div class="input-group">
+
+                    <select id="gouvernerat" name="gouvernerat" formControlName="gouvernerat"
+                        [(ngModel)]="registrationData.gouvernerat">
+                        <option value="">Sélectionnez un gouvernorat :</option>
+                        <option value="tunis">Tunis</option>
+                        <option value="ariana">Ariana</option>
+                        <option value="ben_arous">Ben Arous</option>
+                        <option value="manouba">Manouba</option>
+                        <option value="nabeul">Nabeul</option>
+                        <option value="zaghouan">Zaghouan</option>
+                        <option value="bizert">Bizerte</option>
+                        <option value="beja">Béja</option>
+                        <option value="jendouba">Jendouba</option>
+                        <option value="le_kef">Le Kef</option>
+                        <option value="siliana">Siliana</option>
+                        <option value="sousse">Sousse</option>
+                        <option value="monastir">Monastir</option>
+                        <option value="mahdia">Mahdia</option>
+                        <option value="sfax">Sfax</option>
+                        <option value="kairouan">Kairouan</option>
+                        <option value="kasserine">Kasserine</option>
+                        <option value="sidi_bouzid">Sidi Bouzid</option>
+                        <option value="gabes">Gabès</option>
+                        <option value="medenine">Médenine</option>
+                        <option value="tataouine">Tataouine</option>
+                        <option value="gafsa">Gafsa</option>
+                        <option value="tozeur">Tozeur</option>
+                        <option value="kebili">Kébili</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <span>upload photo</span>
+                    <input type="file" accept="image/*" id="photo" (change)="onPhotoSelected($event)">
+                </div>
+
+
+
+                <button type="submit">Register</button>
+                <p class="footer">Already have an account? <a routerLink="/login">Login</a></p>
+            </form>
+        </div>
+    </div>
+</body>
