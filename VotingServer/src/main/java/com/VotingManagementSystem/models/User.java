@@ -29,10 +29,11 @@ public class User {
     private Long phone;
     private String address;
     private String gouvernerat;
+    private String gender;
 
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
+    private Date createdDate = new Date();
     
     @Lob
     @Basic(fetch = FetchType.LAZY)

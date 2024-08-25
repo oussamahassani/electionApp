@@ -15,6 +15,7 @@ export class VoterElectionComponent  implements OnInit{
 
   filterTerm:any
   election:any;
+  isAdmin:any=false;
   
   constructor(private _election:ElectionService,
     private datePipe: DatePipe,
@@ -30,6 +31,14 @@ export class VoterElectionComponent  implements OnInit{
         Swal.fire("Error !!", "Error in loading data !", "error")
       }
     )
+    let isConnected = localStorage.getItem('user')
+    if(isConnected){
+    
+    let currentUser = JSON.parse(isConnected);
+    if (currentUser.authorities[0].authority == "ADMIN") {
+      this.isAdmin = true ;
+    }
+  }
   }
 
   formattedDate(date: Date): string {
@@ -78,5 +87,18 @@ export class VoterElectionComponent  implements OnInit{
       Swal.fire('infomation','Election is yet to start. ','info')
     }
   }
-  
+  OpenVoter(e:any){
+    let isConnected = localStorage.getItem('user')
+    if(isConnected){
+    
+    let currentUser = JSON.parse(isConnected);
+    if (currentUser.authorities[0].authority == "ADMIN") {
+      this._router.navigate([ "/admin/elections/vote/"+e.election_id]);
+
+    }
+    else {
+    this._router.navigate([ "/voter/elections/vote/"+e.election_id]);
+  }
+  }
+}
 }

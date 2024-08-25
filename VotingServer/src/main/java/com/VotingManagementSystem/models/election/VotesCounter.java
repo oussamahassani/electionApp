@@ -1,5 +1,9 @@
 package com.VotingManagementSystem.models.election;
 
+import java.util.Date;
+
+import org.springframework.data.annotation.CreatedDate;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,4 +27,8 @@ public class VotesCounter {
     private Candidate candidate;
 
     private long count;
+    
+    @CreatedDate
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate = new Date();
 }

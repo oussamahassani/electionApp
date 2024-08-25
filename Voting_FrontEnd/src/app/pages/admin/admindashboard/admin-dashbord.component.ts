@@ -18,9 +18,9 @@ export class AdminDashbordComponent implements OnInit {
         acceptedColisPayed: '0',
         acceptedColisReturn: '0',
         nonAcceptedColis: '0',
-        coutColisAffected: '0',
+        PendingElection: '0',
         acceptedColis: '0',
-        countallColis: '0'
+        OpenElection: '0'
     };
     constructor(
         private el: ElementRef,

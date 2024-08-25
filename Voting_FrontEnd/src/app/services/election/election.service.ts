@@ -17,7 +17,14 @@ export class ElectionService {
   }
 
   public updateElection(data:any){
-    return this.http.put(`${baseUrl}/elections/update`,data);
+    let tokenStr :any = localStorage.getItem("token");
+  
+    const headers = new HttpHeaders({
+      'Authorization': tokenStr,
+   
+    });
+    console.log(headers)
+    return this.http.put(`${baseUrl}/elction/update`,data);
   }
 
   public getAllElectionData(){

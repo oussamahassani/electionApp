@@ -7,9 +7,11 @@ import com.VotingManagementSystem.models.JwtRequest;
 import com.VotingManagementSystem.models.JwtResponse;
 import com.VotingManagementSystem.models.UserRole;
 import com.VotingManagementSystem.models.VoterVerification;
+import com.VotingManagementSystem.models.election.Election;
 import com.VotingManagementSystem.repositories.RoleRepository;
 import com.VotingManagementSystem.repositories.UserRoleRepository;
 import com.VotingManagementSystem.repositories.VoterVerificationRepository;
+import com.VotingManagementSystem.services.ElectionService;
 import com.VotingManagementSystem.services.UserService;
 import com.VotingManagementSystem.services.Impl.UserDetailsImpl;
 import com.VotingManagementSystem.services.Impl.UserDetailsServiceImpl;
@@ -35,6 +37,9 @@ public class AuthenticateController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private ElectionService electionService;
+    
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
@@ -126,5 +131,9 @@ public class AuthenticateController {
     @PostMapping("/countctUs")
     public void countctUs(@RequestBody  SendEmail email){
         userService.countctUs(email);
+    }
+    @PutMapping("/elction/update")
+    public ResponseEntity<?> updateElection(@RequestBody Election election){
+        return ResponseEntity.ok(electionService.updateElection(election));
     }
 }

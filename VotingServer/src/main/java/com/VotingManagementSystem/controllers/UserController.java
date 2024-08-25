@@ -6,6 +6,7 @@ import com.VotingManagementSystem.models.User;
 import com.VotingManagementSystem.models.VoterVerification;
 import com.VotingManagementSystem.models.election.Candidate;
 import com.VotingManagementSystem.models.election.Election;
+import com.VotingManagementSystem.services.CandidateService;
 import com.VotingManagementSystem.services.ElectionService;
 import com.VotingManagementSystem.services.UserService;
 import com.VotingManagementSystem.services.VoterVerificationService;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +46,9 @@ public class UserController {
     
     @Autowired
     private VotesCounterService votesCounterService;
+    
+    @Autowired
+    private CandidateService candidateService;
     
     @PostMapping("/admin")
     public ResponseEntity<User> addAdmin(@RequestBody User user){
@@ -184,26 +189,39 @@ public class UserController {
 		  Map<String, Object> hashMap = new HashMap<>();
 			List<Election> lastElection = electionService.findlastThreeElections();
 			List<User>  lastUser = userService.findlastThreeUser();
+			   List<Election> elections = electionService.getAllElections();
+		        int completed = 0;
+		        int open = 0;
+		        int yet = 0;
+		        for (Election election : elections) {
+		            if (LocalDateTime.now().isBefore(election.getStartDateTime())) {
+		                yet++;
+		            }
+		            if (LocalDateTime.now().isAfter(election.getStartDateTime()) && LocalDateTime.now().isBefore(election.getEndDateTime())) {
+		                open++;
+		            } else {
+		                completed++;
+		            }
+		        }
+
+		    
 			Long  ElectionCount= electionService.countElection();
 			Long  VotesTotal= votesCounterService.countVotes();
-		//	int  acceptedColisencours= colisRep.countColisEnCours();
+			Long  candidatTotal= candidateService.countCandidat();
 			Long  UserCount= userService.counUser();
-		//	int  acceptedColisReturn= colisRep.countColisReturn();
-		//	int  countallColis= colisRep.countallColis();
-		//	int counttransporteur = transporteurrepository.counttransporteur();
-		//	int coutColisAffected = colisRep.countColisAffected();
+		
 			List<Object[]> countColisByDate = userService.countUserByDate();
 
-			// hashMap.put("coutColisAffected",coutColisAffected);
-			// hashMap.put("countallColis",countallColis);
+		
 			 hashMap.put("lastColis",lastElection);
 			 hashMap.put("lastCient",lastUser);
 			 hashMap.put("nonAcceptedColis",ElectionCount);
 			 hashMap.put("totalVotes",VotesTotal);
-			// hashMap.put("acceptedColisencours",acceptedColisencours);
+			 hashMap.put("TotalElection", elections.size());
+			 hashMap.put("OpenElection", open);
+		     hashMap.put("PendingElection", yet);
 			 hashMap.put("acceptedColisPayed",UserCount);
-		//	 hashMap.put("acceptedColisReturn",acceptedColisReturn);
-		//	 hashMap.put("counttransporteur",counttransporteur);
+	
 			 hashMap.put("countColisByDate",countColisByDate);
 
 		return hashMap	;

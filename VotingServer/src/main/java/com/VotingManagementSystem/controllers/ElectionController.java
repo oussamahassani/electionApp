@@ -21,10 +21,7 @@ public class ElectionController {
         return ResponseEntity.ok(electionService.addElection(election));
     }
 
-    @PutMapping("/update/")
-    public ResponseEntity<?> updateElection(@RequestBody Election election){
-        return ResponseEntity.ok(electionService.updateElection(election));
-    }
+
 
     @GetMapping("/")
     public ResponseEntity<?> getAllElections(){

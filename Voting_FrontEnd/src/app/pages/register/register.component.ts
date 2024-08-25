@@ -20,7 +20,8 @@ export class RegisterComponent {
     phone: '',
     address: '',
     gouvernerat: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    gender:""
   };
   loginForm: FormGroup;
 
@@ -41,7 +42,8 @@ export class RegisterComponent {
       phone: ['', [Validators.required]],
       address: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]],
-
+      gouvernerat: ['', [Validators.required]],
+      gender: ['', [Validators.required]],
     });
   }
   get firstName() {
@@ -58,7 +60,7 @@ export class RegisterComponent {
       this.registrationData.email.trim() == '' || this.registrationData.email == null ||
       this.registrationData.phone.trim() == '' || this.registrationData.phone == null ||
       this.registrationData.password.trim() == '' || this.registrationData.password == null ||
-      //  this.registrationData.gouvernerat.trim() == '' || this.registrationData.gouvernerat == null ||
+      this.registrationData.gouvernerat.trim() == '' || this.registrationData.gouvernerat == null ||
       this.confirmPassword.trim() == '' || this.confirmPassword == null ||
       this.registrationData.address.trim() == '' || this.registrationData.address == null) {
 

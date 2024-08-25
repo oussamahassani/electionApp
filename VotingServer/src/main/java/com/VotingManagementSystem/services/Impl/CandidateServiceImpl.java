@@ -76,4 +76,10 @@ public class CandidateServiceImpl implements CandidateService {
     public Candidate updateCandidate(Candidate candidate) {
         return candidateRepository.save(candidate);
     }
+
+	@Override
+	public Long countCandidat() {
+		// TODO Auto-generated method stub
+		return candidateRepository.count();
+	}
 }

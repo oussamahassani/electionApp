@@ -46,7 +46,7 @@
 
                     <select id="gouvernerat" name="gouvernerat" formControlName="gouvernerat"
                         [(ngModel)]="registrationData.gouvernerat">
-                        <option value="">Sélectionnez un gouvernorat :</option>
+                        <option value="">Select a governorate:</option>
                         <option value="tunis">Tunis</option>
                         <option value="ariana">Ariana</option>
                         <option value="ben_arous">Ben Arous</option>
@@ -73,6 +73,14 @@
                         <option value="kebili">Kébili</option>
                     </select>
                 </div>
+                <div class="gender">
+                <select id="gouvernerat" name="gouvernerat" formControlName="gouvernerat"
+                [(ngModel)]="registrationData.gouvernerat">
+                <option value="">Select a gender :</option>
+                <option value="Man">Man</option>
+                <option value="Women">Women</option>
+            </select>
+        </div>
                 <div class="input-group">
                     <span>upload photo</span>
                     <input type="file" accept="image/*" id="photo" (change)="onPhotoSelected($event)">

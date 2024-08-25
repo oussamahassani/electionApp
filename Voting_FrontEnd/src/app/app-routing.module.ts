@@ -26,6 +26,7 @@ import { AcceuilComponent } from './pages/acceuil/acceuil.component'
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component'
 import { AdminDashbordComponent } from './pages/admin/admindashboard/admin-dashbord.component';
+import { ElectionDashbordComponent } from './pages/admin/election/election-details/election-dashbord.component';
 
 const routes: Routes = [
   {
@@ -93,6 +94,10 @@ const routes: Routes = [
         path: 'elections/result/:eid',
         component: ElectionResultComponent
       },
+      {
+        path: 'elections/details/:cid',
+        component: ElectionDashbordComponent,
+      },
 
       // candidates
       {
@@ -111,7 +116,15 @@ const routes: Routes = [
         path: 'candidates/update/:cid',
         component: UpdateCandidateComponent,
       },
-
+      {
+        path: 'Voteelections',
+        component: VoterElectionComponent,
+      },
+      {
+        path: 'elections/vote/:eid',
+        component: VoterElectionPanelComponent
+      },
+      
 
     ]
   },

@@ -46,7 +46,7 @@ body {
 
 }
 
-input,
+input,select,
 textarea {
     width: 100%;
     padding: 15px;

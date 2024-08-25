@@ -68,7 +68,7 @@
                 <td>{{v.address}}</td>
                 <td>
                     <button class="view" [routerLink]="'/admin/voterDetails/voter/' +v.email">View</button>
-                    <button class="delete" (click)="deleteVoter(v.email)" >Delete</button>
+                    <button *ngIf="isNotConnected(v)" class="delete" (click)="deleteVoter(v.email)" >Delete</button>
                 </td>
               </tr>
             

@@ -76,13 +76,13 @@
                             <div class="col-md-2">
                                 <div>
                                     
-                                    <button *ngIf="check(e.startDateTime, e.endDateTime) == 1"class="open_election" [routerLink]="'/voter/elections/vote/'+e.election_id" >Open</button>
+                                    <button *ngIf="check(e.startDateTime, e.endDateTime) == 1" class="open_election" (click)="OpenVoter(e)" >Open</button>
                                     <button disabled *ngIf="check(e.startDateTime, e.endDateTime) == 0"class="future_election" >yet to start</button>
                                     <button disabled *ngIf="check(e.startDateTime, e.endDateTime) == -1"class="closed_election" >Closed</button>
                                     
                                 </div>
                                 <div>
-                                    <button class="view_result" (click)="viewResult(e.startDateTime, e.endDateTime,e.election_id)">View Result</button>
+                                    <button *ngIf="!isAdmin" class="view_result" (click)="viewResult(e.startDateTime, e.endDateTime,e.election_id)">View Result</button>
                                 </div>
 
                             </div>

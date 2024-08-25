@@ -62,6 +62,7 @@ public class MySecurityConfig {
                                 "/user/dashbordInfo",
                                 "/countctUs",
                                 "/user/change-password",
+                                "/elction/update",
                                 "/forgotPassword/sendOTP",
                                 "/forgotPassword/verifyOTP/{otp}",
                                 "/forgotPassword/ChangePassword").permitAll()

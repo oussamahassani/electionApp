@@ -40,6 +40,8 @@ import { FooterComponent } from './components/footer/footer.component'
 import { ContactUsComponent } from './pages/contact-us/contact-us.component'
 import { NavbarWebComponent } from './components/navbarWeb/navbarWeb.component'
 import { AdminDashbordComponent } from './pages/admin/admindashboard/admin-dashbord.component'
+import { ElectionDashbordComponent } from './pages/admin/election/election-details/election-dashbord.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +73,8 @@ import { AdminDashbordComponent } from './pages/admin/admindashboard/admin-dashb
     FooterComponent,
     ContactUsComponent,
     NavbarWebComponent,
-    AdminDashbordComponent
+    AdminDashbordComponent,
+    ElectionDashbordComponent
 
   ],
   imports: [

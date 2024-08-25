@@ -11,7 +11,12 @@ import Swal from 'sweetalert2';
 })
 export class UpdateElectionComponent implements OnInit {
 
-  viewData:any
+  viewData:any = {
+    name:"",
+    descriptions:"",
+    startDateTime:"",
+    endDateTime:""
+  }
 
   election_id:any
 

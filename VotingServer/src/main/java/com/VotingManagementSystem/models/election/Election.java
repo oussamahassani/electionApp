@@ -32,7 +32,7 @@ public class Election {
 
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
+    private Date createdDate = new Date();
     
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "election")
     @JsonIgnore

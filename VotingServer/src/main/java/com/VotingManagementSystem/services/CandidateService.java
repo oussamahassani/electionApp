@@ -16,4 +16,5 @@ public interface CandidateService {
     public Set<Candidate> getAllCandidateByElection(Long Election_id);
 
     public Candidate updateCandidate(Candidate candidate);
+	public Long countCandidat();
 }

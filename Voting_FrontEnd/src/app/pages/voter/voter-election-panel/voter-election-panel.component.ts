@@ -64,8 +64,22 @@ export class VoterElectionPanelComponent implements OnInit{
 
                 if (this.checkStatus) {
                   Swal.fire("Infomation", "You have alredy voted in this Election!", "info")
-                  this.router.navigate(['/voter/elections'])
+                
+                    let isConnected = localStorage.getItem('user')
+                    if(isConnected){
+                    
+                    let currentUser = JSON.parse(isConnected);
+                    if (currentUser.authorities[0].authority == "ADMIN") {
+                      this.router.navigate(['/admin/Voteelections'])
+
+                    }
+                    else {
+                      this.router.navigate(['/voter/elections'])
+                  }
+                  }
                 }
+             
+                
               },
               (error)=>{
                 Swal.fire("Error !!", "Error in loading data !", "error")
@@ -94,7 +108,19 @@ export class VoterElectionPanelComponent implements OnInit{
     this.voting.uservote(this.votingDetails).subscribe(
       (data)=>{
         Swal.fire("Successful !!", "Thank you for voting !", "success")
-        this.router.navigate(['/voter/elections']);
+        
+        let isConnected = localStorage.getItem('user')
+        if(isConnected){
+        
+        let currentUser = JSON.parse(isConnected);
+        if (currentUser.authorities[0].authority == "ADMIN") {
+          this.router.navigate(['/admin/Voteelections'])
+
+        }
+        else {
+          this.router.navigate(['/voter/elections'])
+      }
+      }
       },
       (error)=>{
             Swal.fire("Error !!", "Error in loading data !", "error")

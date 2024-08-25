@@ -14,11 +14,22 @@ export class AuthIntercepter implements HttpInterceptor{
         // add the jwt token to the request
         let authReq = req
         const token = this.login.getToken();
+        let tokenStr :any = localStorage.getItem("token");
+        let id :any = localStorage.getItem("user");
         if (token!=null) {
             authReq = authReq.clone({
                 setHeaders: { Authorization :`Bearer  ${token}`},
-        });
+        })
     }
+        else if(tokenStr != null) {
+            authReq = authReq.clone({
+                setHeaders: { Authorization :`Bearer  ${tokenStr}`},
+        })
+        }
+
+        
+        console.log(token,"token")
+    
         
         return next.handle(authReq);
     }

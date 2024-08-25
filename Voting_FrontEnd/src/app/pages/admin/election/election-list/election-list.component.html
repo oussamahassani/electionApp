@@ -70,6 +70,8 @@
                                             [routerLink]="'/admin/elections/update/' +e.election_id">Update</button>
                                         <button class="delete" *ngIf="CheckValidity(e)"
                                             (click)="deleteElection(e.election_id)">Delete</button>
+                                            <button class="delete" 
+                                            (click)="detailsElection(e.election_id)">Details</button>
                                         <button class="result"
                                             (click)="viewResult(e.startDateTime, e.endDateTime,e.election_id)">Result</button>
                                     </td>

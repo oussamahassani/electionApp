@@ -13,7 +13,7 @@ voters:any
 
 filterTerm:any;
 check:any
-
+connected:any
 constructor(private voter:VoterService){}
 
 
@@ -27,8 +27,15 @@ constructor(private voter:VoterService){}
         Swal.fire("Error !!", "Error in loading data !", "error")
       }
     )
+    let user = localStorage.getItem('user')
+    if (user) {
+      let currentUser = JSON.parse(user)
+      this.connected = currentUser.user_id
+    }
   }
-
+  isNotConnected(c:any){
+    this.connected != c.user_id 
+  }
   deleteVoter(email:any){
     Swal.fire({
       title: 'Are you sure?',

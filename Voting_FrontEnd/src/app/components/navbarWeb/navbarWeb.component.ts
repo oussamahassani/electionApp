@@ -27,10 +27,10 @@ export class NavbarWebComponent {
     let currentUser = JSON.parse(this.curentUser)
     console.log(currentUser)
     if (currentUser.authorities[0].authority == "ADMIN") {
-      this.router.navigate(['/admin/profile'])
+      this.router.navigate(['/admin/dashboerd'])
     }
     else {
-      this.router.navigate(['/voter/profile'])
+      this.router.navigate(['/voter/dashboard'])
     }
   }
 }

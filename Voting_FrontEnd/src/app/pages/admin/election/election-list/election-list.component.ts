@@ -58,6 +58,9 @@ export class ElectionListComponent implements OnInit {
       return true
 
   }
+  detailsElection(election_id: any){
+    this._router.navigate(['/admin/elections/details/'+election_id])
+  }
   deleteElection(election_id: any) {
 
     Swal.fire({
