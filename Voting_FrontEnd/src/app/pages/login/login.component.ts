@@ -59,7 +59,7 @@ export class LoginComponent {
             if (this.login.getUserRole() == 'ADMIN') {
 
               //redirect ..ADMIN: admin-dashboard
-              this.router.navigate(['/admin/dashboard'])
+              this.router.navigate(['/admin/dashboerd'])
               this.login.status = true
               this.login.loginSubjectStatus.next(true);
 

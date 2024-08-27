@@ -18,6 +18,8 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 @Service
 public class VotesCounterServiceImpl implements VotesCounterService {
 
@@ -53,6 +55,7 @@ public class VotesCounterServiceImpl implements VotesCounterService {
     }
 
     @Override
+    @Transactional
     public void removeAllVotesCounterByElection(Long id) {
 
         Election election = electionRepository.findById(id).orElse(null);
@@ -65,7 +68,7 @@ public class VotesCounterServiceImpl implements VotesCounterService {
             while (iterator.hasNext()) {
                 VotesCounter voterVotingStatus = iterator.next();
                 iterator.remove();
-                votesCounterRepository.deleteByElection(election);
+                votesCounterRepository.delete(voterVotingStatus);;
             }
 
             electionRepository.save(election);
@@ -144,5 +147,11 @@ public class VotesCounterServiceImpl implements VotesCounterService {
 	public Long countVotes() {
 		// TODO Auto-generated method stub
 		return votesCounterRepository.count();
+	}
+
+	@Override
+	public List<Object[]> countElectionByDate(Long idElection) {
+		// TODO Auto-generated method stub
+		return votesCounterRepository.countVoteByDate();
 	}
 }

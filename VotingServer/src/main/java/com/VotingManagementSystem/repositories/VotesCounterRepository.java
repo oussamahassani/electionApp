@@ -1,6 +1,7 @@
 package com.VotingManagementSystem.repositories;
-
+import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.VotingManagementSystem.models.election.Candidate;
@@ -18,7 +19,9 @@ public interface VotesCounterRepository extends JpaRepository<VotesCounter,Long>
     public List<VotesCounter> findByElection(Election election);
 
     public Set<VotesCounter> findAllByElection(Election election);
-
+    
+    @Transactional
+    @Modifying
     public void deleteByElection(Election election);
     
     @Query(value = "SELECT YEAR(created_date) AS year, MONTH(created_date) AS month,HOUR(created_date) AS hour, COUNT(*) AS count FROM votes_counter GROUP BY YEAR(created_date), MONTH(created_date) ,HOUR(created_date)  ORDER BY year, month , hour" , nativeQuery = true)

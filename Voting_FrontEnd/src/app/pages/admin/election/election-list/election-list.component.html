@@ -67,13 +67,16 @@
                                     <td>{{formattedDate(e.endDateTime)}}</td>
                                     <td>
                                         <button class="view" *ngIf="CheckValidity(e)"
-                                            [routerLink]="'/admin/elections/update/' +e.election_id">Update</button>
+                                            [routerLink]="'/admin/elections/update/' +e.election_id"><i
+                                                class="fa-solid fa-pen"></i> Update</button>
                                         <button class="delete" *ngIf="CheckValidity(e)"
-                                            (click)="deleteElection(e.election_id)">Delete</button>
-                                            <button class="delete" 
-                                            (click)="detailsElection(e.election_id)">Details</button>
+                                            (click)="deleteElection(e.election_id)"><i class="fa-solid fa-trash"></i>
+                                            Delete</button>
+                                        <button class="delete" (click)="detailsElection(e.election_id)"><i
+                                                class="fa-solid fa-eye"></i>Details</button>
                                         <button class="result"
-                                            (click)="viewResult(e.startDateTime, e.endDateTime,e.election_id)">Result</button>
+                                            (click)="viewResult(e.startDateTime, e.endDateTime,e.election_id)"> <i
+                                                class="fa-solid fa-square-poll-vertical"></i> Result</button>
                                     </td>
                                 </tr>
                             </tbody>

@@ -112,7 +112,7 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllUsers() {
         ArrayList<User> list = new ArrayList<>(userRepository.findAll());
         list.forEach(user -> user.setPassword(""));
-        list.removeIf(a -> Objects.equals(a.getEmail(), "ateafbankapur11@gmail.com"));
+        list.removeIf(a -> Objects.equals(a.getEmail(), "admin@gmail.com"));
 
         return list;
     }
@@ -160,6 +160,12 @@ public class UserServiceImpl implements UserService {
 	public Long counUser() {
 		// TODO Auto-generated method stub
 		return userRepository.count();
+	}
+
+	@Override
+	public User findUserByEmail(String username) {
+		// TODO Auto-generated method stub
+		return userRepository.findByEmail(username);
 	}
 
 

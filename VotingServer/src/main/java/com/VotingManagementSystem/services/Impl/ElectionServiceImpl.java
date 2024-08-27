@@ -75,4 +75,14 @@ public class ElectionServiceImpl implements ElectionService {
 		// TODO Auto-generated method stub
 		return electionRepository.count();
 	}
+
+	@Override
+	public Object getAllElectionsnotNow() {
+		// TODO Auto-generated method stub
+		return electionRepository.getAllElectionNotNow();
+	}
+
+	
+
+	
 }

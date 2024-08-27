@@ -22,6 +22,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -29,7 +30,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.*;
-
+import java.util.stream.Collectors;
+import com.VotingManagementSystem.models.User;
 @RestController
 @CrossOrigin("*")
 public class AuthenticateController {
@@ -73,29 +75,35 @@ public class AuthenticateController {
 
         //Authenticate
         UserDetails userDetails = this.userDetailsService.loadUserByUsername(jwtRequest.getUsername());
+        
         String token = this.jwtUtils.generateToken(userDetails);
+        Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
 
         //get all entry of userRoles
-        Set<UserRole> ur = new HashSet<>(userRole.findAll());
+       Set<UserRole> ur = new HashSet<>(userRole.findAll());
 
         //get all entry of VoterValidation
-        List<VoterVerification> verifications = verificationRepository.findAll();
-        for (UserRole u: ur){
+        List<String> roles = authorities.stream()
+        	    .map(GrantedAuthority::getAuthority)
+        	    .collect(Collectors.toList());
+        
+     // for (UserRole u: ur){
             // check if userRole is admin or not. If Admin then pass token to the user.
-            if(Objects.equals(u.getRole().getName(), "ADMIN")){
-                if (Objects.equals(u.getUser().getEmail(), jwtRequest.getUsername())){
+            if(Objects.equals(roles.get(0), "ADMIN")){
+                if (Objects.equals(userDetails.getUsername(), jwtRequest.getUsername())){
                     return  ResponseEntity.ok(new JwtResponse(token));
                 }
-            }else if(Objects.equals(u.getRole().getName(), "NORMAL")){
-
+            }else if(Objects.equals(roles.get(0), "NORMAL")){
+            	User userDetail = userService.findUserByEmail(userDetails.getUsername());
+            	  VoterVerification verifications = verificationRepository.findByIdUser(userDetail.getUserId());
                 //if userRole is Normal then check in the validation table if user is verified or not
-                verifications.forEach(voterVerification -> {
-                    if (voterVerification.getStatus()==null){
+                
+                    if (verifications.getStatus()==null){
                         throw new UserNotPermittedException("User is not verified");
                     }
-                });
+               
             }
-        }
+      //}
 
         return ResponseEntity.ok(new JwtResponse(token));
 

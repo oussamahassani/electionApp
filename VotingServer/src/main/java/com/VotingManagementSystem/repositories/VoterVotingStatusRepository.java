@@ -17,14 +17,14 @@ public interface VoterVotingStatusRepository extends JpaRepository<VoterVotingSt
     
     @Query(value = "SELECT user.gender AS gender, COUNT(*) AS count " +
             "FROM voter_voting_status " +
-            "JOIN user ON votes_counter.user_user_id  = user.user_id  " +
+            "JOIN user ON voter_voting_status.user_user_id  = user.user_id  " +
             "GROUP BY user.gender " +
             "ORDER BY gender", nativeQuery = true)
 List<Object[]> countVotesByGender();
 
 @Query(value = "SELECT user.gouvernerat AS gouvernerat, COUNT(*) AS count " +
         "FROM voter_voting_status " +
-        "JOIN user ON votes_counter.user_user_id  = user.user_id  " +
+        "JOIN user ON voter_voting_status.user_user_id  = user.user_id  " +
         "GROUP BY user.gouvernerat " +
         "ORDER BY gouvernerat", nativeQuery = true)
 List<Object[]> countVotesByGouvernerat();

@@ -74,13 +74,12 @@
                     </select>
                 </div>
                 <div class="gender">
-                <select id="gouvernerat" name="gouvernerat" formControlName="gouvernerat"
-                [(ngModel)]="registrationData.gouvernerat">
-                <option value="">Select a gender :</option>
-                <option value="Man">Man</option>
-                <option value="Women">Women</option>
-            </select>
-        </div>
+                    <select id="gender" name="gender" formControlName="gender" [(ngModel)]="registrationData.gender">
+                        <option value="">Select a gender :</option>
+                        <option value="Man">Man</option>
+                        <option value="Women">Women</option>
+                    </select>
+                </div>
                 <div class="input-group">
                     <span>upload photo</span>
                     <input type="file" accept="image/*" id="photo" (change)="onPhotoSelected($event)">

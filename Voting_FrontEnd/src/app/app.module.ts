@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { DatePipe } from '@angular/common';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -87,7 +88,7 @@ import { ElectionDashbordComponent } from './pages/admin/election/election-detai
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [authIntercepterProvider],
+  providers: [authIntercepterProvider, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

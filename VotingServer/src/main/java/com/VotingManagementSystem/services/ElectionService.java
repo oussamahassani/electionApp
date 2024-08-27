@@ -16,6 +16,7 @@ public interface ElectionService {
     
     public List<Election> findlastThreeElections();
 	public Long countElection();
+	public Object getAllElectionsnotNow();
 
 
 }

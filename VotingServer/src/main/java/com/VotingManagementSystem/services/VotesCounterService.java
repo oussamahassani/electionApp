@@ -1,5 +1,6 @@
 package com.VotingManagementSystem.services;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -13,4 +14,5 @@ public interface VotesCounterService {
     public void removeAllVotesCounterByElection(Long id);
     public Map<String,?> getResultByElection(Election election);
 	public Long countVotes();
+	public List<Object[]> countElectionByDate(Long eid);
 }

@@ -72,12 +72,13 @@
                   <td>{{v.user.phone}}</td>
                   <td>{{v.user.address}}</td>
                   <td>
-                    <button class="view" [routerLink]="'/admin/voterValidation/voter/' +v.verification_id">View</button>
+                    <button class="view" [routerLink]="'/admin/voterValidation/voter/' +v.verification_id"><i
+                        class="fa-solid fa-eye"></i> View</button>
                   </td>
                 </tr>
               </tbody>
             </table>
-            <div *ngIf="voters.user==null" style="text-align:center;">
+            <div *ngIf="voters.length == 0" style="text-align:center;">
               No Data to display
             </div>
           </div>

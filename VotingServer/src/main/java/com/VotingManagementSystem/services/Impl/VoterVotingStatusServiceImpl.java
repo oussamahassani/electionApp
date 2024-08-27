@@ -62,4 +62,16 @@ public class VoterVotingStatusServiceImpl implements VoterVotingStatusService {
         return new ArrayList<>(voterVotingStatusRepository.findAll());
     }
 
+	@Override
+	public List<Object[]> countElectionByGender(Long idElection) {
+		// TODO Auto-generated method stub
+		return voterVotingStatusRepository.countVotesByGender();
+	}
+
+	@Override
+	public List<Object[]> countElectionByGouvernerat(Long idElection) {
+		// TODO Auto-generated method stub
+		return voterVotingStatusRepository.countVotesByGouvernerat();
+	}
+
 }

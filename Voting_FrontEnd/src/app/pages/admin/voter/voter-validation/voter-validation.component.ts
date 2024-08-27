@@ -9,17 +9,17 @@ import Swal from 'sweetalert2';
 })
 export class VoterValidationComponent implements OnInit {
 
-  voters:any
-  filterTerm:any;
+  voters: any = []
+  filterTerm: any;
 
-  constructor(private _voter:VoterService){}
+  constructor(private _voter: VoterService) { }
 
   ngOnInit(): void {
-     this._voter.getValidationVoters().subscribe(
-      (data)=>{
-        this.voters=data;
+    this._voter.getValidationVoters().subscribe(
+      (data) => {
+        this.voters = data;
       },
-      (error)=>{
+      (error) => {
         Swal.fire("Error !!", "Error in loading data !", "error")
       }
     )

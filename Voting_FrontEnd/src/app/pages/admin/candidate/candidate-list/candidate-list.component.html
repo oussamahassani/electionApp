@@ -71,11 +71,13 @@
                   <td>{{c.election.name}}</td>
 
                   <td>
-                    <button class="view" [routerLink]="'/admin/candidates/view/' +c.candidate_id">View</button>
+                    <button class="view" [routerLink]="'/admin/candidates/view/' +c.candidate_id"><i
+                        class="fa-solid fa-eye"></i> View</button>
                     <button *ngIf=CheckValidity(c) class="update"
-                      [routerLink]="'/admin/candidates/update/' +c.candidate_id">Update</button>
-                    <button *ngIf=CheckValidity(c) class="delete"
-                      (click)="deleteCandidate(c.candidate_id)">Delete</button>
+                      [routerLink]="'/admin/candidates/update/' +c.candidate_id"> <i class="fa-solid fa-pen"></i>
+                      Update</button>
+                    <button *ngIf=CheckValidity(c) class="delete" (click)="deleteCandidate(c.candidate_id)"><i
+                        class="fa-solid fa-trash"></i> Delete</button>
                   </td>
                 </tr>
 

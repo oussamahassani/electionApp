@@ -16,5 +16,12 @@ export class DashbordService {
         return this.http.get<any>(`${baseUrl}/user/dashbordInfo`
         );
     }
+    getElectionDashbordInfo(id: any): Observable<any> {
+
+        return this.http.get<any>(`${baseUrl}/elections/dashbordInfo/${id}`
+        );
+    }
+
+
 }
 

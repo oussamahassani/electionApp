@@ -28,4 +28,6 @@ public interface UserService {
 	public List<User> findlastThreeUser();
 
 	public Long counUser();
+
+	public User findUserByEmail(String username);
 }

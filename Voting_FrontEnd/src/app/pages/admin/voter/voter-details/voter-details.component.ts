@@ -7,36 +7,38 @@ import Swal from 'sweetalert2';
   templateUrl: './voter-details.component.html',
   styleUrls: ['./voter-details.component.css']
 })
-export class VoterDetailsComponent  implements OnInit{
+export class VoterDetailsComponent implements OnInit {
 
-voters:any
+  voters: any
 
-filterTerm:any;
-check:any
-connected:any
-constructor(private voter:VoterService){}
+  filterTerm: any;
+  check: any
+  connected: any
+  constructor(private voter: VoterService) { }
 
 
   ngOnInit(): void {
     this.voter.getAllVoter().subscribe(
-      (data)=>{
-        this.voters=data;
-        this.check =this.voters.length==0
+      (data) => {
+        this.voters = data;
+        this.check = this.voters.length == 0
       },
-      (error)=>{
+      (error) => {
         Swal.fire("Error !!", "Error in loading data !", "error")
       }
     )
     let user = localStorage.getItem('user')
     if (user) {
       let currentUser = JSON.parse(user)
-      this.connected = currentUser.user_id
+      console.log(currentUser)
+      this.connected = currentUser.user.userId
     }
   }
-  isNotConnected(c:any){
-    this.connected != c.user_id 
+  isNotConnected(c: any) {
+    console.log(this.connected)
+    return this.connected != c.userId
   }
-  deleteVoter(email:any){
+  deleteVoter(email: any) {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -52,7 +54,7 @@ constructor(private voter:VoterService){}
         this.voter.deleteVoter(email).subscribe(
           (data) => {
 
-            
+
             this.voters = this.voters.filter((v: any) => v.email != email)
             Swal.fire("Success !!", "Voter deleted successfully", 'success');
 

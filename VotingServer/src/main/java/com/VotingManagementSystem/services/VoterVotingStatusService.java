@@ -12,4 +12,8 @@ public interface VoterVotingStatusService {
     public void removeAllVoterVotingStatusByElection(Long eid);
     public boolean getVoterVotingStatus(User user, Election election);
     public List<VoterVotingStatus> getAll();
+
+	public List<Object[]> countElectionByGender(Long eid);
+	public List<Object[]> countElectionByGouvernerat(Long eid);
+
 }
