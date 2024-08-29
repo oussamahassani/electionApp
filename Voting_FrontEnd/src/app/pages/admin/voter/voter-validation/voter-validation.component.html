@@ -65,12 +65,12 @@
 
               <tbody>
 
-                <tr *ngFor="let v of voters | filter:filterTerm">
-                  <td>{{v.user.userId}}</td>
-                  <td>{{v.user.firstName}} {{v.user.lastName}}</td>
-                  <td>{{v.user.email}}</td>
-                  <td>{{v.user.phone}}</td>
-                  <td>{{v.user.address}}</td>
+                <tr *ngFor="let v of user | filter:filterTerm:['firstName', 'lastName','phone']">
+                  <td>{{v.userId}}</td>
+                  <td>{{v.firstName}} {{v.lastName}}</td>
+                  <td>{{v.email}}</td>
+                  <td>{{v.phone}}</td>
+                  <td>{{v.address}}</td>
                   <td>
                     <button class="view" [routerLink]="'/admin/voterValidation/voter/' +v.verification_id"><i
                         class="fa-solid fa-eye"></i> View</button>

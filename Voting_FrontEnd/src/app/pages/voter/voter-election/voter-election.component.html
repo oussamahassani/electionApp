@@ -44,56 +44,61 @@
                 </div>
             </div>
             <!-- Voters List Section -->
-            <div class="scrollable_div" >
-            <div *ngFor="let e of election | filter:filterTerm">
+            <div class="scrollable_div">
+                <div *ngFor="let e of election | filter:filterTerm:['name', 'descriptions']">
 
-                <section class="attendance">
-                    <div class="attendance-list">
+                    <section class="attendance">
+                        <div class="attendance-list">
 
-                        <div class="row">
-                            <div class="col-md-10 ">
+                            <div class="row">
+                                <div class="col-md-10 ">
 
-                                <div class="row">
-                                    <div class="col-md-6 voter_election_title">
-                                        Election Name : {{e.name}}
+                                    <div class="row">
+                                        <div class="col-md-6 voter_election_title">
+                                            Election Name : {{e.name}}
+                                        </div>
+                                        <div class="col-md-6 voter_election_title">
+                                            Description : {{e.descriptions}}
+                                        </div>
                                     </div>
-                                    <div class="col-md-6 voter_election_title">
-                                        Description : {{e.descriptions}}
+
+                                    <div class="row">
+                                        <div class="col-md-6 voter_election_title">
+                                            Start Time : {{formattedDate(e.startDateTime)}}
+                                        </div>
+                                        <div class="col-md-6 voter_election_title">
+                                            End Time : {{formattedDate(e.endDateTime)}}
+                                        </div>
                                     </div>
+
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-6 voter_election_title">
-                                        Start Time : {{formattedDate(e.startDateTime)}}
-                                    </div>
-                                    <div class="col-md-6 voter_election_title">
-                                        End Time : {{formattedDate(e.endDateTime)}}
-                                    </div>
-                                </div>
+                                <div class="col-md-2">
+                                    <div>
 
+                                        <button *ngIf="check(e.startDateTime, e.endDateTime) == 1" class="open_election"
+                                            (click)="OpenVoter(e)">Open</button>
+                                        <button disabled *ngIf="check(e.startDateTime, e.endDateTime) == 0"
+                                            class="future_election">yet to start</button>
+                                        <button disabled *ngIf="check(e.startDateTime, e.endDateTime) == -1"
+                                            class="closed_election">Closed</button>
+
+                                    </div>
+                                    <div>
+                                        <button *ngIf="!isAdmin" class="view_result"
+                                            (click)="viewResult(e.startDateTime, e.endDateTime,e.election_id)">View
+                                            Result</button>
+                                    </div>
+
+                                </div>
                             </div>
 
-                            <div class="col-md-2">
-                                <div>
-                                    
-                                    <button *ngIf="check(e.startDateTime, e.endDateTime) == 1" class="open_election" (click)="OpenVoter(e)" >Open</button>
-                                    <button disabled *ngIf="check(e.startDateTime, e.endDateTime) == 0"class="future_election" >yet to start</button>
-                                    <button disabled *ngIf="check(e.startDateTime, e.endDateTime) == -1"class="closed_election" >Closed</button>
-                                    
-                                </div>
-                                <div>
-                                    <button *ngIf="!isAdmin" class="view_result" (click)="viewResult(e.startDateTime, e.endDateTime,e.election_id)">View Result</button>
-                                </div>
 
-                            </div>
+
                         </div>
-
-
-
-                    </div>
-                </section>
+                    </section>
+                </div>
             </div>
-        </div>
         </section>
     </div>
 </body>

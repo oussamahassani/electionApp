@@ -60,7 +60,8 @@
                             </thead>
 
                             <tbody>
-                                <tr *ngFor="let e of elections | filter:filterTerm">
+                                <tr
+                                    *ngFor="let e of elections | filter:filterTerm:['name', 'startDateTime','endDateTime']">
                                     <td>{{e.election_id}}</td>
                                     <td>{{e.name}}</td>
                                     <td>{{formattedDate(e.startDateTime)}}</td>

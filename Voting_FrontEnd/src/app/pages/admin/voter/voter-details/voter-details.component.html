@@ -55,6 +55,7 @@
               <thead>
                 <tr>
                   <th>ID</th>
+                  <th>CIN</th>
                   <th>Name</th>
                   <th>Email</th>
                   <th>Phone</th>
@@ -65,8 +66,9 @@
 
               <tbody>
 
-                <tr *ngFor="let v of voters | filter:filterTerm">
+                <tr *ngFor="let v of voters | filter:filterTerm:['firstName', 'lastName','phone']">
                   <td>{{v.userId}}</td>
+                  <td>{{v.cin}}</td>
                   <td>{{v.firstName}} {{v.lastName}}</td>
                   <td>{{v.email}}</td>
                   <td>{{v.phone}}</td>

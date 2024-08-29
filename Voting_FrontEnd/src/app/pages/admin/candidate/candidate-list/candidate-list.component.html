@@ -64,7 +64,7 @@
 
               <tbody>
 
-                <tr *ngFor="let c of candidates | filter:filterTerm">
+                <tr *ngFor="let c of candidates | filter:filterTerm:['firstName', 'lastName','partyName']">
                   <td>{{c.candidate_id}}</td>
                   <td>{{c.firstName}} {{c.lastName}}</td>
                   <td>{{c.partyName}}</td>
