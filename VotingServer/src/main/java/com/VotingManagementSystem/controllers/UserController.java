@@ -123,7 +123,32 @@ public class UserController {
             return new ResponseEntity<>("Error: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @PostMapping("/addvoterByAdmin")
+    public ResponseEntity<?> addvoterByAdmin(@RequestPart("user") User user, @RequestPart("photo") MultipartFile photo) {
+        try {
+        	   String pass = user.getPassword() ;
+            if (photo.isEmpty()) {
+                return new ResponseEntity<>("Please select a file to upload", HttpStatus.BAD_REQUEST);
+            } else {
+            
+                byte[] bytes = photo.getBytes();
+                user.setImage(bytes); // Assuming you have a field to store the Base64 image in the User class.
+            }
 
+            user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
+
+            // Save the user to the database here
+            userService.addUserByAdmin(user);
+            verificationService.sendMail("you are invited to vote on this site localhost:4200 your coordinate is: "+user.getEmail() + " : " + pass,user.getEmail());
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "User registered successfully. Please wait until your account is verified by the admin, and you will be notified via email.");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("Error: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
     @PostMapping("/change-password")
     public ResponseEntity<?> changePassword(@RequestBody ChangePassword changePassword){
         User user = userService.getUserById(changePassword.getUserId());

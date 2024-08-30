@@ -10,16 +10,28 @@ export class RegisterService {
 
   constructor(private http: HttpClient) { }
 
-//add user
-public addNewUser(registrationData:any, photo: File): Observable<any> {
+  //add user
+  public addNewUser(registrationData: any, photo: File): Observable<any> {
     const formData: FormData = new FormData();
-    
+
     formData.append('user', new Blob([JSON.stringify(registrationData)], {
-        type: "application/json"
+      type: "application/json"
     }));
-   
-      formData.append('photo', photo, photo.name);
-    
-  return this.http.post(`${baseUrl}/user/voter`,formData);
-}
+
+    formData.append('photo', photo, photo.name);
+
+    return this.http.post(`${baseUrl}/user/voter`, formData);
+  }
+  public addNewUserByAdmin(registrationData: any, photo: File): Observable<any> {
+    const formData: FormData = new FormData();
+
+    formData.append('user', new Blob([JSON.stringify(registrationData)], {
+      type: "application/json"
+    }));
+
+    formData.append('photo', photo, photo.name);
+
+    return this.http.post(`${baseUrl}/user/addvoterByAdmin`, formData);
+  }
+
 }

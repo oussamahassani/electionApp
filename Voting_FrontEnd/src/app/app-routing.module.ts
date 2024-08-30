@@ -27,6 +27,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component'
 import { AdminDashbordComponent } from './pages/admin/admindashboard/admin-dashbord.component';
 import { ElectionDashbordComponent } from './pages/admin/election/election-details/election-dashbord.component';
+import { AddvoterComponent } from './pages/admin/add-voter/add-voter.component'
 
 const routes: Routes = [
   {
@@ -63,6 +64,10 @@ const routes: Routes = [
       {
         path: 'voterDetails',
         component: VoterDetailsComponent,
+      },
+      {
+        path: 'add-voter',
+        component: AddvoterComponent,
       },
       {
         path: 'voterDetails/voter/:email',
@@ -124,7 +129,7 @@ const routes: Routes = [
         path: 'elections/vote/:eid',
         component: VoterElectionPanelComponent
       },
-      
+
 
     ]
   },

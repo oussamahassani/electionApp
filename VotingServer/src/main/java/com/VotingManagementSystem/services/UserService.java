@@ -30,4 +30,6 @@ public interface UserService {
 	public Long counUser();
 
 	public User findUserByEmail(String username);
+
+	public User addUserByAdmin(User user);
 }

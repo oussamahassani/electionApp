@@ -168,5 +168,30 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findByEmail(username);
 	}
 
+	@Override
+	public User addUserByAdmin(User user) {
+		User local = userRepository.findByEmailAndCin(user.getEmail(),user.getCin());
+        if(local!=null){
+            throw new UserAlreadyExitsException("User with provide mail ID : "+user.getEmail()+ " already exists !!");
+        }
+        Role role1 = roleRepository.findByName("NORMAL");
+
+        //saving user and role in userRole
+        UserRole userRole= new UserRole();
+        userRole.setRole(role1);
+        userRole.setUser(user);
+
+        user.getUserRoles().add(userRole);
+        User data = userRepository.save(user);
+
+        //adding user id to verification list
+        VoterVerification verification = new VoterVerification();
+        verification.setUser(data);
+        verification.setStatus("Approved");
+        System.out.println(verification);
+        verificationService.addVerificationDetails(verification);
+		return user;
+	}
+
 
 }

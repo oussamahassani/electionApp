@@ -18,4 +18,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
 	@Query(value="select * from user c order by user_id   DESC  Limit 3 ", nativeQuery = true)
 
 	List<User> findlastThreeUser();
+
+	User findByEmailAndCin(String email, String cin);
 }

@@ -6,22 +6,23 @@ import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-add-voter',
+  templateUrl: './add-voter.component.html',
+  styleUrls: ['./add-voter.component.css']
 })
-export class RegisterComponent {
+export class AddvoterComponent {
 
   registrationData = {
     firstName: '',
     lastName: '',
+    cin: '',
     email: '',
     password: '',
     phone: '',
     address: '',
     gouvernerat: "",
     confirmPassword: "",
-    gender:""
+    gender: ""
   };
   loginForm: FormGroup;
 
@@ -44,6 +45,7 @@ export class RegisterComponent {
       confirmPassword: ['', [Validators.required]],
       gouvernerat: ['', [Validators.required]],
       gender: ['', [Validators.required]],
+      cin: ['', [Validators.required]]
     });
   }
   get firstName() {
@@ -53,10 +55,14 @@ export class RegisterComponent {
   get lastName() {
     return this.loginForm.get('lastName');
   }
+  get cin() {
+    return this.loginForm.get('cin');
+  }
   formSubmit() {
     console.log(this.registrationData)
     if (this.registrationData.firstName.trim() == '' || this.registrationData.firstName == null ||
       this.registrationData.lastName.trim() == '' || this.registrationData.lastName == null ||
+      this.registrationData.cin == "" || this.registrationData.cin == null ||
       this.registrationData.email.trim() == '' || this.registrationData.email == null ||
       this.registrationData.phone.trim() == '' || this.registrationData.phone == null ||
       this.registrationData.password.trim() == '' || this.registrationData.password == null ||
@@ -82,10 +88,10 @@ export class RegisterComponent {
     }
 
 
-    this.register.addNewUser(this.registrationData, this.photo).subscribe(
+    this.register.addNewUserByAdmin(this.registrationData, this.photo).subscribe(
       (data) => {
         Swal.fire("Success !!", data.message, 'success');
-        this.router.navigate(['/login'])
+        this.router.navigate(['/admin/voterDetails'])
 
       },
       (error) => {

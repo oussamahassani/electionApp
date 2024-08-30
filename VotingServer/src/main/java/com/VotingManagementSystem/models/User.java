@@ -30,6 +30,7 @@ public class User {
     private String address;
     private String gouvernerat;
     private String gender;
+    private String cin ; 
 
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)

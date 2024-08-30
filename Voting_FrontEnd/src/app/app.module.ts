@@ -42,7 +42,7 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component'
 import { NavbarWebComponent } from './components/navbarWeb/navbarWeb.component'
 import { AdminDashbordComponent } from './pages/admin/admindashboard/admin-dashbord.component'
 import { ElectionDashbordComponent } from './pages/admin/election/election-details/election-dashbord.component';
-
+import { AddvoterComponent } from './pages/admin/add-voter/add-voter.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +75,8 @@ import { ElectionDashbordComponent } from './pages/admin/election/election-detai
     ContactUsComponent,
     NavbarWebComponent,
     AdminDashbordComponent,
-    ElectionDashbordComponent
+    ElectionDashbordComponent,
+    AddvoterComponent
 
   ],
   imports: [
