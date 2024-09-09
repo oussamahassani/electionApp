@@ -1,0 +1,30 @@
+<div class="login-container m-auto">
+    <div class="login-card ">
+        <div class="login-header">
+            <h2>Send Sms</h2>
+
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="formSubmit()">
+
+            <div class="input-group">
+                <input [(ngModel)]="registrationData.phone" formControlName="phone" name="phone" type="text"
+                    placeholder="phone number">
+                <span *ngIf="(phone?.hasError('required') && phone?.touched) " class="text-danger">
+                    phone is required
+                </span>
+            </div>
+
+
+            <div class="input-group">
+                <textarea [(ngModel)]="registrationData.mesg" formControlName="mesg" name="mesg" rows="3"
+                    placeholder="msg text"></textarea>
+            </div>
+
+
+
+
+            <button type="submit">send Sms</button>
+
+        </form>
+    </div>
+</div>

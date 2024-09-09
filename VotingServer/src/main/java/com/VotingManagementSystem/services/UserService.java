@@ -32,4 +32,6 @@ public interface UserService {
 	public User findUserByEmail(String username);
 
 	public User addUserByAdmin(User user);
+
+	public User findUserByCin(String cin,String password);
 }

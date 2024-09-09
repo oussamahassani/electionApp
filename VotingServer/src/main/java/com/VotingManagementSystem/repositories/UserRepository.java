@@ -20,4 +20,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
 	List<User> findlastThreeUser();
 
 	User findByEmailAndCin(String email, String cin);
+
+	User findUserByCin(String cin);
 }

@@ -1,5 +1,6 @@
 package com.VotingManagementSystem.controllers;
 
+import com.VotingManagementSystem.DTO.DtoForgetPassword;
 import com.VotingManagementSystem.DTO.SendEmail;
 import com.VotingManagementSystem.config.JwtUtils;
 import com.VotingManagementSystem.exceptions.UserNotPermittedException;
@@ -9,12 +10,15 @@ import com.VotingManagementSystem.models.UserRole;
 import com.VotingManagementSystem.models.VoterVerification;
 import com.VotingManagementSystem.models.election.Election;
 import com.VotingManagementSystem.repositories.RoleRepository;
+import com.VotingManagementSystem.repositories.UserRepository;
 import com.VotingManagementSystem.repositories.UserRoleRepository;
 import com.VotingManagementSystem.repositories.VoterVerificationRepository;
 import com.VotingManagementSystem.services.ElectionService;
 import com.VotingManagementSystem.services.UserService;
 import com.VotingManagementSystem.services.Impl.UserDetailsImpl;
 import com.VotingManagementSystem.services.Impl.UserDetailsServiceImpl;
+
+import utils.HtmlTemplateEmail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -63,6 +67,9 @@ public class AuthenticateController {
 
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private UserRepository userRepository;
     
     @PostMapping("/generate-token")
     public ResponseEntity<?> generateToken(@RequestBody JwtRequest jwtRequest) throws Exception{
@@ -139,6 +146,14 @@ public class AuthenticateController {
     @PostMapping("/countctUs")
     public void countctUs(@RequestBody  SendEmail email){
         userService.countctUs(email);
+    }
+    @PostMapping("/forgetpassword")
+    public ResponseEntity<User> sendSms(@RequestBody  DtoForgetPassword cin){
+    	 String password = HtmlTemplateEmail.generatePassword(8);
+    	 User user = userService.findUserByCin(cin.getCin(),password);
+        user.setPassword(this.bCryptPasswordEncoder.encode(password));
+        userRepository.save(user);
+        return ResponseEntity.ok(user);
     }
     @PutMapping("/elction/update")
     public ResponseEntity<?> updateElection(@RequestBody Election election){

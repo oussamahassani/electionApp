@@ -193,5 +193,14 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
+	@Override
+	public User findUserByCin(String cin , String password) {
+		// TODO Auto-generated method stub
+	User user = 	userRepository.findUserByCin(cin);
+	    mailSendService.testemail(user.getEmail(),  "votre nouveaux mot de passe est " + password +  " votre login est"+user.getEmail()  , "nouvaux password");
+
+		return user;
+	}
+
 
 }

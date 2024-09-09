@@ -1,16 +1,21 @@
 package com.VotingManagementSystem.controllers;
 
+import com.VotingManagementSystem.DTO.SendSms;
 import com.VotingManagementSystem.exceptions.PasswordDoesNotMatchException;
 import com.VotingManagementSystem.models.ChangePassword;
 import com.VotingManagementSystem.models.User;
 import com.VotingManagementSystem.models.VoterVerification;
 import com.VotingManagementSystem.models.election.Candidate;
 import com.VotingManagementSystem.models.election.Election;
+import com.VotingManagementSystem.repositories.UserRepository;
 import com.VotingManagementSystem.services.CandidateService;
 import com.VotingManagementSystem.services.ElectionService;
+import com.VotingManagementSystem.services.MailSendService;
 import com.VotingManagementSystem.services.UserService;
 import com.VotingManagementSystem.services.VoterVerificationService;
 import com.VotingManagementSystem.services.VotesCounterService;
+
+import utils.HtmlTemplateEmail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,8 +40,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+ 
     @Autowired
     private VoterVerificationService verificationService;
+    
+    @Autowired
+    private MailSendService mailSendService ;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -57,7 +66,15 @@ public class UserController {
 
         return ResponseEntity.ok(userService.addAdminUser(user));
     }
+    @PostMapping("/sendSms")
+    public ResponseEntity<?> sendSms(@RequestBody SendSms sendSms){
 
+  
+
+        return ResponseEntity.ok(mailSendService.sendsmsnotification(sendSms.getMsg(), sendSms.getPhone()));
+    }
+
+    
 //    private static final String UPLOADED_FOLDER = ".//..//..//VotingManagementSystem//VotingServer//src//main//resources//static//images//";
 //    private static final String DEFAULT_IMAGE = UPLOADED_FOLDER + "photo_1698335878080";
 

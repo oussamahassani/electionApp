@@ -61,6 +61,7 @@ public class MySecurityConfig {
                                 "/user/voter",
                                 "/user/dashbordInfo",
                                 "/countctUs",
+                                "/forgetpassword",
                                 "/user/change-password",
                                 "/elction/update",
                                 "/forgotPassword/sendOTP",

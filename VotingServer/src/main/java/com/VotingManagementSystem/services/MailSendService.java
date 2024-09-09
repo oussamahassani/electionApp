@@ -1,4 +1,10 @@
 package com.VotingManagementSystem.services;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import org.apache.logging.log4j.LogManager;
@@ -21,7 +27,9 @@ import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import java.util.Properties;
-
+import java.net.URL;
+import java.net.URLEncoder;
+import java.io.BufferedReader;
 @Service
 public class MailSendService {
 private static final Logger logger = LogManager.getLogger(MailSendService.class);
@@ -34,7 +42,7 @@ private String sender;
 private JavaMailSender mailSender;
 
 
-
+private static HttpURLConnection conn;
 
 
 public String sendMsg(String emailTo, String sendMsg , String ObjectEmail) {
@@ -146,5 +154,57 @@ catch (Exception e) {
   logger.info("status" + e);
   return "Error while Sending Mail";
 }
+}
+
+public Boolean sendsmsnotification(String msg, String phone) {
+    Boolean returnResult = false;
+    String respenseMessage = "";
+    URL url;
+    HttpURLConnection conn;
+    String apiurl;
+	try {
+		apiurl = "https://marbled-ten-dedication.glitch.me/sendSMS?mobile="+ URLEncoder.encode(phone, "UTF-8") + "&msg=" + URLEncoder.encode(msg, "UTF-8");
+		 try {
+		      url = new URL(apiurl);
+		      conn = (HttpURLConnection) url.openConnection();
+
+		      conn.setRequestMethod("GET");
+		      conn.connect();
+
+		      int responseCode = conn.getResponseCode();
+
+		      if (responseCode == 200) {
+		   
+		    	    StringBuilder response = new StringBuilder();
+
+		    	  BufferedReader reader =
+		    	            new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+		    	        String line;
+		    	        while ((line = reader.readLine()) != null) {
+		    	          response.append(line);
+		    	        }
+		    	        reader.close();
+
+		    	        // Parse the response as needed (e.g., JSON parsing)
+		    	        String responseText = response.toString();
+		    	        // Use responseText as needed
+
+		    	        // Log the response
+		    	        logger.info("Sms Response: " + responseText);
+		    	  returnResult = true ;
+		      }
+		      return returnResult  ;
+		    }
+		    catch(IOException exction) {
+		    	System.out.println(exction);
+		    	return returnResult ;
+		    }
+	} catch (UnsupportedEncodingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		return returnResult;
+	}
+   
 }
 }

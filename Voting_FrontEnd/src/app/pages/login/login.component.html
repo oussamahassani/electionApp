@@ -3,7 +3,7 @@
     <div class="login-container">
         <div class="login-card">
             <div class="login-header">
-                <h2>Digital Election</h2>
+                <h2>Vote Smart</h2>
                 <p>Welcome back! Please login to continue.</p>
             </div>
             <form [formGroup]="loginForm" (ngSubmit)="formSubmit()">
@@ -28,9 +28,10 @@
                     Password is required and must be at least 6 characters
                 </span>
                 <button (click)="formSubmit()" type="submit">Login</button>
-
-                <p class="footer">Don't have an account? <a routerLink="/register">Sign Up</a></p>
-
+                <div class="footer">
+                    <em>Don't have an account? <a routerLink="/register">Sign Up</a></em>
+                    <p class="">Forget your password? <a routerLink="/forgetpass">forget password</a></p>
+                </div>
             </form>
         </div>
     </div>

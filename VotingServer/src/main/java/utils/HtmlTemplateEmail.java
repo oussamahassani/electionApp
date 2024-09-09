@@ -1,4 +1,5 @@
 package utils;
+import java.util.Random;
 
 public class HtmlTemplateEmail {
 	
@@ -26,5 +27,17 @@ public class HtmlTemplateEmail {
 		    return modelHtml;
 		  }
 
-	
+	  public static String generatePassword(int length) {
+		    String alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		    StringBuilder password = new StringBuilder(length);
+		    Random random = new Random(System.nanoTime());
+
+		    for (int i = 0; i < length; i++) {
+		      int index = random.nextInt(alphabet.length());
+		      password.append(alphabet.charAt(index));
+		    }
+
+		    return password.toString();
+		  
+	  }
 }

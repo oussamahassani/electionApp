@@ -43,6 +43,8 @@ import { NavbarWebComponent } from './components/navbarWeb/navbarWeb.component'
 import { AdminDashbordComponent } from './pages/admin/admindashboard/admin-dashbord.component'
 import { ElectionDashbordComponent } from './pages/admin/election/election-details/election-dashbord.component';
 import { AddvoterComponent } from './pages/admin/add-voter/add-voter.component'
+import { sendSmsvoterComponent } from './pages/admin/sendSms-voter/sendSms-voter.component'
+import { ForgetPasswordComponent } from './pages/forgetPassword/forgetPassword.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +78,9 @@ import { AddvoterComponent } from './pages/admin/add-voter/add-voter.component'
     NavbarWebComponent,
     AdminDashbordComponent,
     ElectionDashbordComponent,
-    AddvoterComponent
+    AddvoterComponent,
+    sendSmsvoterComponent,
+    ForgetPasswordComponent
 
   ],
   imports: [

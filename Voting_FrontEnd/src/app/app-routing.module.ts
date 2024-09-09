@@ -28,7 +28,8 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component'
 import { AdminDashbordComponent } from './pages/admin/admindashboard/admin-dashbord.component';
 import { ElectionDashbordComponent } from './pages/admin/election/election-details/election-dashbord.component';
 import { AddvoterComponent } from './pages/admin/add-voter/add-voter.component'
-
+import { sendSmsvoterComponent } from './pages/admin/sendSms-voter/sendSms-voter.component'
+import { ForgetPasswordComponent } from './pages/forgetPassword/forgetPassword.component'
 const routes: Routes = [
   {
     path: '',
@@ -46,6 +47,11 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'forgetpass',
+    component: ForgetPasswordComponent,
+    pathMatch: 'full',
+  },
+  {
     path: 'register',
     component: RegisterComponent,
     pathMatch: 'full',
@@ -56,6 +62,8 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       { path: 'dashboerd', component: AdminDashbordComponent },
+      { path: 'sendSms', component: sendSmsvoterComponent },
+
       {
         path: 'profile',
         component: ProfileComponent,

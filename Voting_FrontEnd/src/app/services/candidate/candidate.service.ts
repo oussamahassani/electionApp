@@ -8,48 +8,50 @@ import baseUrl from '../helper';
 })
 export class CandidateService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   // add candidate
-  public addCandidate(data:any, photo: File): Observable<any> {
+  public addCandidate(data: any, photo: File): Observable<any> {
     const formData: FormData = new FormData();
-    
+
     formData.append('user', new Blob([JSON.stringify(data)], {
-        type: "application/json"
+      type: "application/json"
     }));
-   
-      formData.append('photo', photo, photo.name);
+
+    formData.append('photo', photo, photo.name);
     console.log(formData)
-    return this.http.post(`${baseUrl}/candidate/addNew`,formData)
-  }
-  
-  // update candidate
-  updateCandidate(data:any) {
-    return this.http.put(`${baseUrl}/candidate/update`,data)
+    return this.http.post(`${baseUrl}/candidate/addNew`, formData)
   }
 
+  // update candidate
+  updateCandidate(data: any) {
+    return this.http.put(`${baseUrl}/candidate/update`, data)
+  }
+  sendSms(phone: any, msg: any) {
+    return this.http.post(`${baseUrl}/user/sendSms`, { phone, msg })
+  }
   // get all candidate 
-  public getCandidate(){
+  public getCandidate() {
     return this.http.get(`${baseUrl}/candidate/`)
   }
 
   // get single candidate
-  public getSingleCandidate(cid:any){
+  public getSingleCandidate(cid: any) {
     return this.http.get(`${baseUrl}/candidate/${cid}`)
   }
 
   // user end
-  getcandidateByElection(eid:any){
+  getcandidateByElection(eid: any) {
     return this.http.get(`${baseUrl}/candidate/election/${eid}`)
   }
 
   // delete candidate
-  public deleteCandidate(cid:any){
+  public deleteCandidate(cid: any) {
     return this.http.delete(`${baseUrl}/candidate/${cid}`)
   }
 
 
- 
 
-  
+
+
 }

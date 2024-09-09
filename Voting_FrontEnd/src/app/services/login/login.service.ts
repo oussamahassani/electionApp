@@ -21,7 +21,11 @@ export class LoginService {
   public updatePassword(passwords: any) {
     return this.http.post(`${baseUrl}/user/change-password`, passwords);
   }
+  public forgetpassword(cin: any) {
+    return this.http.post(`${baseUrl}/forgetpassword`, {cin});
 
+
+  }
 
   //current user
   public getCurrentUser() {
