@@ -4,9 +4,9 @@
             <h2>Send Sms</h2>
 
         </div>
-        <form [formGroup]="loginForm" (ngSubmit)="formSubmit()">
+        <form [formGroup]="loginForm" (ngSubmit)="formSubmit()" class="row">
 
-            <div class="input-group">
+            <div class="input-group col-md-5">
                 <input [(ngModel)]="registrationData.phone" formControlName="phone" name="phone" type="text"
                     placeholder="phone number">
                 <span *ngIf="(phone?.hasError('required') && phone?.touched) " class="text-danger">
@@ -15,7 +15,7 @@
             </div>
 
 
-            <div class="input-group">
+            <div class="input-group col-md-6">
                 <textarea [(ngModel)]="registrationData.mesg" formControlName="mesg" name="mesg" rows="3"
                     placeholder="msg text"></textarea>
             </div>

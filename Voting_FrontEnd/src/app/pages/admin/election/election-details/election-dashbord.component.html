@@ -1,6 +1,7 @@
 <div class="container-fluid" id="container-wrapper">
     <div class="container-fluid">
-        <h3 style="padding-top: 15px;" class="text-center">Election Details</h3>
+        <h3 style="padding-top: 15px;" class="text-center"><i class="fa-solid fa-check-to-slot"></i> Election Details
+        </h3>
         <br>
 
         <div class="row">
@@ -11,19 +12,20 @@
                 <h5 *ngIf="!election.descriptions">Description : NA</h5>
             </div>
             <div class="col-md-4">
-                <h5>Start Time : {{formattedDate(election.startDateTime)}}</h5>
-                <h5>End Time : {{formattedDate(election.endDateTime)}}</h5>
+                <h5><i class="fa-solid fa-calendar-days"></i> Start Time : {{formattedDate(election.startDateTime)}}
+                </h5>
+                <h5><i class="fa-solid fa-calendar-days"></i> End Time : {{formattedDate(election.endDateTime)}}</h5>
             </div>
 
         </div>
     </div>
-    <div class="row mb-4 mt-3">
 
-        <div class="col-xl-8 col-lg-7  offset-md-2">
+    <div class="d-flex">
+        <div class="col-xl-6 col-lg-6">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Election By Date</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Electeur By Date</h6>
 
                 </div>
                 <!-- Card Body -->
@@ -35,11 +37,11 @@
             </div>
         </div>
 
-        <div class="col-xl-8 col-lg-7  offset-md-2">
+        <div class="col-xl-6 col-lg-6">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Election By City Overview</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Electeur By City Overview</h6>
 
                 </div>
                 <!-- Card Body -->
@@ -51,24 +53,24 @@
             </div>
         </div>
 
+    </div>
+    <div class="col-xl-8 col-lg-7  offset-md-2">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Electeur By gender Overview</h6>
 
-        <div class="col-xl-8 col-lg-7  offset-md-2">
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Election By gender Overview</h6>
-
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="electionBygender"></canvas>
-                    </div>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="chart-area">
+                    <canvas id="electionBygender"></canvas>
                 </div>
             </div>
         </div>
-
-
-
     </div>
+
+
+
+
 </div>

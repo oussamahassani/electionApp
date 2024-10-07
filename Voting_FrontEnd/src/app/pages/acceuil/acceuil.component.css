@@ -1,132 +1,164 @@
 .container {
-    background-color:#ffff;
+  background-color: #ffff;
+}
+
+.image {
+  width: 100%;
+}
+
+.text-black {
+  color: #1b1a1a;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  color: #1b1a1a;
+  height: 100vh;
+}
+
+.brown-text {
+  color: #d08d57;
+}
+
+img {
+  width: 20px;
+  color: #100f0f;
+}
+
+.social-icons i {
+  padding: 8px;
+}
+
+.social-icons i:hover {
+  transform: scale(1.5);
+}
+
+.img-logo img {
+  width: 150px;
+  height: 60px;
+}
+
+.about {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 40px;
+  padding: 50px;
+}
+
+.about-content h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #d08d57;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  opacity: 1;
+}
+
+.text h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #d08d57;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  opacity: 1;
+}
+
+.about img {
+  width: 100%;
+}
+
+.services {
+  padding: 50px;
+}
+
+.servicesHeading {
+  text-align: center;
+}
+
+.services h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #d08d57;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  opacity: 1;
+}
+
+.services-content {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 80px;
+}
+
+.flex-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.flex-icons i {
+  font-size: 70px;
+  color: #fff;
+}
+
+button {
+  background-color: #359e88;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  margin: 10px;
+  border-radius: 50px;
+  outline: none;
+  border: none;
+  width: 150px;
+  height: 40px;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+button a {
+  text-decoration: none;
+  text-align: center;
+  color: #050505;
+  background: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    padding: o;
   }
-  .image{
-    width: 100%;
-  }
+
   .content {
-    display: flex;
-    align-items: center;
-    color: #1b1a1a;
-    height: 100vh;
+    flex-wrap: wrap;
   }
-  .brown-text {
-    color: #d08d57;
-  }
-  img {
-    width: 20px;
-    color: #100f0f;
-  }
-  .social-icons i {
-    padding: 8px;
-  }
-  .social-icons i:hover {
-    transform: scale(1.5);
-  }
-  .img-logo img {
-    width: 150px;
-    height: 60px;
-  }
+
   .about {
-    display: flex;
-    justify-content: space-evenly;
-    gap: 40px;
-    padding: 50px;
+    flex-wrap: wrap;
+    padding: 20px;
   }
-  .about-content h3 {
-    font-size: 15px;
-    font-weight: 700;
-    color: #d08d57;
-    letter-spacing: 0.1rem;
-    text-transform: uppercase;
-    opacity: 1;
+
+  .text {
+    padding: 20px;
   }
-  .text h3 {
-    font-size: 15px;
-    font-weight: 700;
-    color: #d08d57;
-    letter-spacing: 0.1rem;
-    text-transform: uppercase;
-    opacity: 1;
+
+  .services {
+    padding: 20px;
   }
-  .about img {
+
+  .services-content {
+    flex-wrap: wrap;
+    padding-top: 50px;
+  }
+
+  .flex-icons i {
+    font-size: 40px;
+  }
+
+  .image {
     width: 100%;
   }
-  .services {
-    padding: 50px;
-  }
-  .servicesHeading {
-    text-align: center;
-  }
-  .services h3 {
-    font-size: 15px;
-    font-weight: 700;
-    color: #d08d57;
-    letter-spacing: 0.1rem;
-    text-transform: uppercase;
-    opacity: 1;
-  }
-  .services-content {
-    display: flex;
-    justify-content: space-evenly;
-    padding-top: 80px;
-  }
-  .flex-icons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 10px;
-  }
-  .flex-icons i {
-    font-size: 70px;
-    color: #fff;
-  }
-  button {
-    background-color: #359e88;
-    text-decoration: none;
-    font-family: "Montserrat", sans-serif;
-    margin: 10px;
-    border-radius: 50px;
-    outline: none;
-    border: none;
-    width: 150px;
-    height: 40px;
-  }
-  button:hover {
-    transform: scale(1.1);
-  }
-  button a {
-    text-decoration: none;
-    text-align: center;
-    color: #050505;
-    background: none;
-  }
-  @media only screen and (max-width: 600px) {
-    .container{
-      padding: o;
-    }
-    .content {
-      flex-wrap: wrap;
-    }
-    .about {
-      flex-wrap: wrap;
-      padding: 20px;
-    }
-    .text{
-      padding: 20px;
-    }
-    .services{
-      padding: 20px;
-    }
-    .services-content {
-      flex-wrap: wrap;
-      padding-top: 50px;
-    }
-    .flex-icons i {
-      font-size: 40px;
-    }
-    .image{
-      width: 100%;
-    }
-  }
+}

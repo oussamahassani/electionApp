@@ -40,7 +40,7 @@ export class ForgetPasswordComponent {
         //success
         //sweat alert
         //  console.log(data)
-        this.sweetAlert.showToast('success', 'Logged in successfully')
+        this.sweetAlert.showToast('success', 'Email Send in successfully')
 
 
 
