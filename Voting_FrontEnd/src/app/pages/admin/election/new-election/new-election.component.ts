@@ -10,36 +10,39 @@ import Swal from 'sweetalert2';
   styleUrls: ['./new-election.component.css']
 })
 export class NewElectionComponent {
-  viewData={
-    name:'',
-    descriptions:'',
-    startDateTime:'',
-    endDateTime:'',
+  viewData = {
+    name: '',
+    descriptions: '',
+    startDateTime: '',
+    endDateTime: '',
   }
 
-  constructor(private _election:ElectionService,
-              private _route:Router,
-              private sweetAlert:SweetAlertService){}
+  constructor(private _election: ElectionService,
+    private _route: Router,
+    private sweetAlert: SweetAlertService) { }
 
 
-  formSubmit(){
-    if(this.viewData.name.trim()==''|| this.viewData.name==null ||
-      this.viewData.descriptions.trim()==''|| this.viewData.descriptions==null ||
-      this.viewData.startDateTime.trim()==''|| this.viewData.startDateTime==null ||
-      this.viewData.endDateTime.trim()==''|| this.viewData.endDateTime==null){
+  formSubmit() {
+    if (this.viewData.name.trim() == '' || this.viewData.name == null ||
+      this.viewData.descriptions.trim() == '' || this.viewData.descriptions == null ||
+      this.viewData.startDateTime.trim() == '' || this.viewData.startDateTime == null ||
+      this.viewData.endDateTime.trim() == '' || this.viewData.endDateTime == null) {
 
-      this.sweetAlert.showToast('info','Please fill all the details to procced further.');
+      this.sweetAlert.showToast('info', 'Please fill all the details to procced further.');
       return
     }
-
+    if (this.viewData.startDateTime >= this.viewData.endDateTime) {
+      this.sweetAlert.showToast('info', 'Please verify date election.');
+      return
+    }
     this._election.addElection(this.viewData).subscribe(
-      (data:any)=>{
-        Swal.fire("Success !!","Successfully Create new Election",'success');
+      (data: any) => {
+        Swal.fire("Success !!", "Successfully Create new Election", 'success');
         this._route.navigate(['/admin/elections'])
       },
-      (error)=>{
+      (error) => {
         console.log(error);
-        Swal.fire("Failure !!","something Went worng !",'error');
+        Swal.fire("Failure !!", "something Went worng !", 'error');
       }
     )
 
